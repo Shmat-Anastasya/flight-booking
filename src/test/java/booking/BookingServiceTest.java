@@ -24,7 +24,7 @@ class BookingServiceTest {
 
         Booking booking = service.book(flight, anna, "12A");
 
-        assertEquals(99, booking.getId());
+        assertEquals(1, booking.getId());
         assertSame(flight, booking.getFlight());
         assertSame(anna, booking.getPassenger());
         assertEquals("12A", booking.getSeat());
