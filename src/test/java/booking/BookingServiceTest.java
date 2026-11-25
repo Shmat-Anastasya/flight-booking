@@ -63,6 +63,25 @@ class BookingServiceTest {
         assertEquals(3, sameSeatOtherFlight.getId());
     }
 
+    @Test
+    void cancelFreesSeatForNewBooking() {
+        SeatRepository repository = new InMemorySeatRepository();
+        BookingService service = new BookingService(repository);
+        Flight flight = flight();
+        Passenger anna = new Passenger(1, "Анна Смирнова");
+        Passenger boris = new Passenger(2, "Борис Козлов");
+
+        Booking booking = service.book(flight, anna, "12A");
+        service.cancel(booking);
+
+        assertNull(repository.findById(1));
+        assertNull(repository.findByFlightAndSeat(flight.getId(), "12A"));
+
+        Booking again = service.book(flight, boris, "12A");
+        assertEquals("12A", again.getSeat());
+        assertSame(boris, again.getPassenger());
+    }
+
     private Flight flight() {
         return new Flight(1, "SU100", "Москва — Сочи");
     }

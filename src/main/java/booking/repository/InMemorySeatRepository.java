@@ -32,4 +32,9 @@ public class InMemorySeatRepository implements SeatRepository {
         }
         return null;
     }
+
+    @Override
+    public void delete(Booking booking) {
+        bookings.remove(booking);
+    }
 }

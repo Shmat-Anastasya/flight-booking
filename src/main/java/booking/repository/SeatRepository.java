@@ -9,4 +9,6 @@ public interface SeatRepository {
     Booking findById(int id);
 
     Booking findByFlightAndSeat(int flightId, String seat);
+
+    void delete(Booking booking);
 }

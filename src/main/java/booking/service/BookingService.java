@@ -35,4 +35,11 @@ public class BookingService {
         repository.save(booking);
         return booking;
     }
+
+    public void cancel(Booking booking) {
+        if (booking == null || repository.findById(booking.getId()) == null) {
+            throw new IllegalArgumentException("Бронь не найдена");
+        }
+        repository.delete(booking);
+    }
 }
