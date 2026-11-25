@@ -38,7 +38,7 @@ public class BookingService {
 
     public void cancel(Booking booking) {
         if (booking == null || repository.findById(booking.getId()) == null) {
-            throw new IllegalArgumentException("Бронь не найдена");
+            throw new IllegalArgumentException("Такая бронь не найдена");
         }
         repository.delete(booking);
     }
