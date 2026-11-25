@@ -50,4 +50,3 @@ public class BookingService {
         repository.delete(booking);
     }
 }
-// Эта строка специально длиннее ста символов, чтобы Checkstyle показал нарушение правила LineLength в файле BookingService.
