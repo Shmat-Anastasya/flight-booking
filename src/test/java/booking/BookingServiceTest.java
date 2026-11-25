@@ -20,11 +20,11 @@ class BookingServiceTest {
         SeatRepository repository = new InMemorySeatRepository();
         BookingService service = new BookingService(repository);
         Flight flight = flight();
-        Passenger anna = new Passenger(99, "Анна Смирнова");
+        Passenger anna = new Passenger(1, "Анна Смирнова");
 
         Booking booking = service.book(flight, anna, "12A");
 
-        assertEquals(1, booking.getId());
+        assertEquals(99, booking.getId());
         assertSame(flight, booking.getFlight());
         assertSame(anna, booking.getPassenger());
         assertEquals("12A", booking.getSeat());
