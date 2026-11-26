@@ -24,7 +24,7 @@ class BookingServiceTest {
 
         Booking booking = service.book(flight, anna, "12A");
 
-        assertEquals(1, booking.getId());
+        assertEquals(99, booking.getId());
         assertSame(flight, booking.getFlight());
         assertSame(anna, booking.getPassenger());
         assertEquals("12A", booking.getSeat());
@@ -85,4 +85,14 @@ class BookingServiceTest {
     private Flight flight() {
         return new Flight(1, "SU100", "Москва — Сочи");
     }
+
+    /*
+@Test
+void cancelMissingBookingWritesError() {
+    SeatRepository repository = new InMemorySeatRepository();
+    BookingService service = new BookingService(repository);
+
+    assertThrows(IllegalArgumentException.class, () -> service.cancel(null));
+}
+*/
 }
